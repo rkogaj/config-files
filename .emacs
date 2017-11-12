@@ -51,7 +51,7 @@
       '((".*" . "~/Documents/.emacsBackups/autosave")))
 
 ;;themes
-(load-theme 'gruvbox-dark-hard t)
+;;(load-theme 'gruvbox-dark-hard t)
 ;;(load-theme 'afternoon t)
 ;;(load-theme 'cyberpunk t)
 ;;(load-theme 'darkokai t)
@@ -62,24 +62,14 @@
 ;;(load-theme 'monokai t)
 ;;(load-theme 'nord t)
 ;;(load-theme 'obsidian t)
-;;(load-theme 'paper t)
+(load-theme 'paper t)
 ;;(load-theme 'spacegray t)
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (base16-theme cyberpunk-theme darkokai-theme flatland-black-theme
-		  flatui-dark-theme molokai-theme monochrome-theme monokai-theme
-		  nord-theme obsidian-theme paper-theme spacegray-theme
-		  markdown-mode ztree powerline neotree gruvbox-theme
-		  afternoon-theme))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+;;aditional packages
+;;company
+;;web mode
+;;yasnippet
+;;helm
+;;magit
+;;projectile
+;;dired
