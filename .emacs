@@ -33,6 +33,23 @@
 (add-hook 'org-mode-hook 'auto-fill-mode)
 ;;orgmode indent mode hook
 (add-hook 'org-mode-hook 'org-indent-mode)
+;;orgmode todo keywords
+(setq org-todo-keywords
+      '((sequence "TODO" "STARTED" "|" "DONE" "HOLD" 
+		  "CANCELED")))
+;;orgmode todo FACES
+(setq org-todo-keyword-faces
+      '(("TODO" . org-warning)
+	("STARTED" . "orange")
+	("DONE" . (:foreground "PaleGreen"
+		   :weight bold))
+	("HOLD" . (:foreground "dark gray"
+		   :weight bold))
+	("CANCELED" . (:foreground "white"
+		       :background "dark red"
+		       :weight bold))
+	))
+
 ;;(setq-default fill-column 80)
 
 ;;electric brackets
@@ -49,6 +66,9 @@
 ;; autosave files directory
 (setq tramp-auto-save-directory
       '((".*" . "~/Documents/.emacsBackups/autosave")))
+;;auto save settings
+;;(auto-save-interval 0)
+;;(auto-save-timeout 300)
 
 ;;themes
 ;;(load-theme 'gruvbox-dark-hard t)
@@ -62,14 +82,18 @@
 ;;(load-theme 'monokai t)
 ;;(load-theme 'nord t)
 ;;(load-theme 'obsidian t)
-(load-theme 'paper t)
+;;(load-theme 'paper t)
 ;;(load-theme 'spacegray t)
+(load-theme 'base16-ocean t)
+
+
 
 ;;aditional packages
-;;company
+;;company - autocomplete
 ;;web mode
 ;;yasnippet
 ;;helm
 ;;magit
 ;;projectile
 ;;dired
+;;go-mode
