@@ -40,10 +40,10 @@
 ;;orgmode todo FACES
 (setq org-todo-keyword-faces
       '(("TODO" . org-warning)
-	("STARTED" . "orange")
+	("STARTED" . "turquoise")
 	("DONE" . (:foreground "PaleGreen"
 		   :weight bold))
-	("HOLD" . (:foreground "dark gray"
+	("HOLD" . (:foreground "dim gray"
 		   :weight bold))
 	("CANCELED" . (:foreground "white"
 		       :background "dark red"
