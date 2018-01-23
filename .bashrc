@@ -1,18 +1,21 @@
-#
-# ~/.bashrc
-#
+# solus specific
+source /usr/share/defaults/etc/profile
 
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
-
-alias ls='ls --color=auto'
-PS1='[\u@\h \W]\$ '
-# >>> Added by cnchi installer
 EDITOR=/usr/bin/vim
 
-# alias
-alias emacs='emacs -nw'
+# aliases
 alias ls='ls -l --color=auto'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
+
+# powerline
+# solus specific
+source /usr/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
+# fedora
+# if [ -f `which powerline-daemon` ]; then
+#   powerline-daemon -q
+#   POWERLINE_BASH_CONTINUATION=1
+#   POWERLINE_BASH_SELECT=1
+#   . /usr/share/powerline/bash/powerline.sh
+# fi
