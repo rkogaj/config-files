@@ -1,17 +1,25 @@
 ;;settings
 (package-initialize)
 
-;;font
-(set-frame-font "Inconsolata-11" nil t)
-
 ;;disable graphical scroll and toolbars
 (toggle-scroll-bar -1)
 (tool-bar-mode -1)
+
+;;define transparency
+(set-frame-parameter (selected-frame) 'alpha '(90 . 80))
+;;transparency function M-x transparency
+(defun transparency (value)
+  "Sets the transparency of the frame window. 0=transparent/100=opaque"
+  (interactive "nTransparency Value 0 - 100 opaque:")
+  (set-frame-parameter (selected-frame) 'alpha value))
 
 ;;melpa
 (require 'package)
 (add-to-list 'package-archives
 	     '("melpa" . "https://melpa.org/packages/"))
+
+;;font
+(set-frame-font "Hack-8" nil t)
 
 ;;powerline
 (powerline-default-theme)
@@ -70,6 +78,15 @@
 ;;(auto-save-interval 0)
 ;;(auto-save-timeout 300)
 
+;;company mode
+(add-hook 'after-init-hook 'global-company-mode)
+;;autocomplete reducing delay
+(setq company-dabbrev-downcase 0)
+(setq company-idle-delay 0)
+
+;;projectile mode
+(projectile-global-mode)
+
 ;;themes
 ;;(load-theme 'gruvbox-dark-hard t)
 ;;(load-theme 'afternoon t)
@@ -84,8 +101,9 @@
 ;;(load-theme 'obsidian t)
 ;;(load-theme 'paper t)
 ;;(load-theme 'spacegray t)
-(load-theme 'base16-ocean t)
-
+;;(load-theme 'base16-ocean t)
+;; (load-theme 'darktooth t)
+(load-theme 'base16-atelier-heath t)
 
 
 ;;aditional packages
@@ -97,3 +115,17 @@
 ;;projectile
 ;;dired
 ;;go-mode
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (projectile magit darktooth-theme company base16-theme powerline))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
