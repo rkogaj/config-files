@@ -19,7 +19,7 @@
 	     '("melpa" . "https://melpa.org/packages/"))
 
 ;;font
-(set-frame-font "Hack-8" nil t)
+(set-frame-font "Inconsolata-10" nil t)
 
 ;;powerline
 (powerline-default-theme)
@@ -58,15 +58,11 @@
 		       :weight bold))
 	))
 
-;;(setq-default fill-column 80)
-
 ;;electric brackets
 (electric-pair-mode)
 
 ;;dead tildes
 (require 'iso-transl)
-
-;;truncate long lines
 
 ;; Backup files directory
 (setq backup-directory-alist
@@ -88,23 +84,11 @@
 (projectile-global-mode)
 
 ;;themes
-;;(load-theme 'gruvbox-dark-hard t)
-;;(load-theme 'afternoon t)
-;;(load-theme 'cyberpunk t)
-;;(load-theme 'darkokai t)
-;;(load-theme 'flatland-black t)
-;;(load-theme 'flatui-dark t)
-;;(load-theme 'molokai t)
-;;(load-theme 'monochrome t)
-;;(load-theme 'monokai t)
-;;(load-theme 'nord t)
-;;(load-theme 'obsidian t)
-;;(load-theme 'paper t)
-;;(load-theme 'spacegray t)
-;;(load-theme 'base16-ocean t)
-;; (load-theme 'darktooth t)
-(load-theme 'base16-atelier-heath t)
+(load-theme 'sanityinc-tomorrow-night t)
 
+;;yasnippet
+(require 'yasnippet)
+(add-hook 'prog-mode-hook #'yas-minor-mode)
 
 ;;aditional packages
 ;;company - autocomplete
