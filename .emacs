@@ -6,12 +6,12 @@
 (tool-bar-mode -1)
 
 ;;define transparency
-(set-frame-parameter (selected-frame) 'alpha '(90 . 80))
+;;(set-frame-parameter (selected-frame) 'alpha '(90 . 80))
 ;;transparency function M-x transparency
-(defun transparency (value)
-  "Sets the transparency of the frame window. 0=transparent/100=opaque"
-  (interactive "nTransparency Value 0 - 100 opaque:")
-  (set-frame-parameter (selected-frame) 'alpha value))
+;;(defun transparency (value)
+  ;;"Sets the transparency of the frame window. 0=transparent/100=opaque"
+  ;;(interactive "nTransparency Value 0 - 100 opaque:")
+  ;;(set-frame-parameter (selected-frame) 'alpha value))
 
 ;;melpa
 (require 'package)
@@ -19,10 +19,17 @@
 	     '("melpa" . "https://melpa.org/packages/"))
 
 ;;font
-(set-frame-font "Inconsolata-10" nil t)
+(set-frame-font "Inconsolata 10.5" nil t)
 
-;;powerline
-(powerline-default-theme)
+;; dead acute
+(require 'iso-transl)
+
+;;telephone line
+(telephone-line-mode 1)
+
+;; other line modes
+;;; power line
+;;; (powerline-default-theme)
 
 ;;prog-mode hook linum-mode
 (add-hook 'prog-mode-hook 'linum-mode)
@@ -48,7 +55,8 @@
 ;;orgmode todo FACES
 (setq org-todo-keyword-faces
       '(("TODO" . org-warning)
-	("STARTED" . "turquoise")
+	("STARTED" . (:foreground "turquoise"
+		      :weight bold))
 	("DONE" . (:foreground "PaleGreen"
 		   :weight bold))
 	("HOLD" . (:foreground "dim gray"
@@ -60,9 +68,6 @@
 
 ;;electric brackets
 (electric-pair-mode)
-
-;;dead tildes
-(require 'iso-transl)
 
 ;; Backup files directory
 (setq backup-directory-alist
@@ -84,21 +89,12 @@
 (projectile-global-mode)
 
 ;;themes
-(load-theme 'sanityinc-tomorrow-night t)
+(load-theme 'sanityinc-tomorrow-bright t)
 
 ;;yasnippet
 (require 'yasnippet)
 (add-hook 'prog-mode-hook #'yas-minor-mode)
 
-;;aditional packages
-;;company - autocomplete
-;;web mode
-;;yasnippet
-;;helm
-;;magit
-;;projectile
-;;dired
-;;go-mode
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -106,7 +102,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (projectile magit darktooth-theme company base16-theme powerline))))
+    (haskell-mode color-theme-sanityinc-tomorrow company magit projectile telephone-line yasnippet yasnippet-snippets))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
