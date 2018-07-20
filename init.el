@@ -86,14 +86,18 @@
 (projectile-global-mode)
 
 ;;themes
-(load-theme 'sanityinc-tomorrow-bright t)
+;; (load-theme 'sanityinc-tomorrow-bright t)
 
 ;;yasnippet
 (require 'yasnippet)
 (add-hook 'prog-mode-hook #'yas-minor-mode)
 
 ;;telephone line
-(telephone-line-mode 1)
+;;(telephone-line-mode 1)
+
+;;smart mode line
+(sml/setup)
+(setq sml/theme 'respectful)
 
 ;; other line modes
 ;;; power line
@@ -110,9 +114,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" default)))
  '(package-selected-packages
    (quote
-    (color-theme-sanityinc-tomorrow haskell-mode haskell-snippets projectile telephone-line yasnippet-snippets company yasnippet))))
+    (smart-mode-line color-theme-sanityinc-tomorrow haskell-mode haskell-snippets projectile telephone-line yasnippet-snippets company yasnippet))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
