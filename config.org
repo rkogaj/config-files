@@ -1,0 +1,151 @@
+* Emacs
+** Bar modes
+#+BEGIN_SRC emacs-lisp
+  ;; disable graphical scroll and toolbars
+  (toggle-scroll-bar -1)
+  (tool-bar-mode -1)
+#+END_SRC
+** Font
+#+BEGIN_SRC emacs-lisp
+  (set-frame-font "Fira Code 8" nil t)
+#+END_SRC
+** Allowing dead acute
+#+BEGIN_SRC emacs-lisp
+  (require 'iso-transl)
+#+END_SRC
+** Scrolling fix
+#+BEGIN_SRC emacs-lisp
+  (setq scroll-conservatively 100)
+#+END_SRC
+** Disabling ring-bell
+#+BEGIN_SRC emacs-lisp
+  (setq ring-bell-function 'ignore)
+#+END_SRC
+** Linum mode
+#+BEGIN_SRC emacs-lisp
+  ;;prog-mode hook linum-mode
+  (add-hook 'prog-mode-hook 'linum-mode)
+  ;;linum-mode format for CLI
+  (setq linum-format 'dynamic)
+
+  ;;linum mode dynamic mod
+  (defadvice linum-update-window (around linum-dynamic activate)
+    (let* ((w (length (number-to-string
+                       (count-lines (point-min) (point-max)))))
+           (linum-format (concat " %" (number-to-string w) "d ")))
+      ad-do-it))
+#+END_SRC
+** Electric pair mode
+#+BEGIN_SRC emacs-lisp
+  (electric-pair-mode)
+#+END_SRC
+** Backup directories
+#+BEGIN_SRC emacs-lisp
+  ;; Backup files directory
+  (setq backup-directory-alist
+        '((".*" . "~/Documents/.emacsBackups/backup")))
+  ;; autosave files directory
+  (setq tramp-auto-save-directory
+        '((".*" . "~/Documents/.emacsBackups/autosave")))
+#+END_SRC
+** Auto save settings
+#+BEGIN_SRC emacs-lisp
+  ;; auto-save-interval is amount of characters before saving
+  (setq auto-save-interval 200)
+  ;; auto-save-timeout is amount of time before saving in seconds
+  (setq auto-save-timeout 300)
+#+END_SRC
+* Org mode
+** Org Initialization
+#+BEGIN_SRC emacs-lisp
+  ;;auto-fill-mode hook emacs25
+  (add-hook 'org-mode-hook 'auto-fill-mode)
+  ;;orgmode indent mode hook
+  (add-hook 'org-mode-hook 'org-indent-mode)
+#+END_SRC
+** Org keywords
+#+BEGIN_SRC emacs-lisp
+  ;; Org-mode TODO Keywords
+  (setq org-todo-keywords
+        '((sequence "TODO" "STARTED" "|" "DONE" "HOLD" 
+                    "CANCELED")))
+  ;; Org-mode TODO faces
+  (setq org-todo-keyword-faces
+        '(("TODO" . org-warning)
+          ("STARTED" . (:foreground "turquoise"
+                        :weight bold))
+          ("DONE" . (:foreground "PaleGreen"
+                     :weight bold))
+          ("HOLD" . (:foreground "dim gray"
+                     :weight bold))
+          ("CANCELED" . (:foreground "white"
+                         :background "dark red"
+                         :weight bold))
+          ))
+#+END_SRC
+* Haskell-mode
+#+BEGIN_SRC emacs-lisp
+  (use-package haskell-mode
+    :config
+    (add-to-list 'exec-path "~/.cabal/bin/")
+    (autoload 'ghc-init "ghc" nil t)
+    (autoload 'ghc-debug "ghc" nil t)
+    (add-hook 'haskell-mode-hook (lambda () (ghc-init))))
+#+END_SRC
+* Company
+** Package configuration
+#+BEGIN_SRC emacs-lisp
+  (use-package company
+    :ensure t
+    :init
+    (global-company-mode))
+#+END_SRC
+** company-ghc
+#+BEGIN_SRC emacs-lisp
+  (use-package company-ghc
+    :ensure t
+    :init
+    (with-eval-after-load 'company
+      (add-to-list 'company-backends 'company-ghc)))
+#+END_SRC
+* Projectile
+** Initial config
+#+BEGIN_SRC emacs-lisp
+  (use-package projectile
+    :ensure t
+    :init
+    (projectile-global-mode))
+#+END_SRC
+* Themes
+** Sanityinc-tomorrow
+#+BEGIN_SRC emacs-lisp
+  (use-package color-theme-sanityinc-tomorrow
+    :ensure t
+    :init
+    (load-theme 'sanityinc-tomorrow-night t))
+#+END_SRC
+* Yasnippet
+** Initial config
+#+BEGIN_SRC emacs-lisp
+  (use-package yasnippet
+    :hook (prog-mode . yas-minor-mode))
+#+END_SRC
+* Mode line
+** Smart mode line
+#+BEGIN_SRC emacs-lisp
+  (use-package smart-mode-line
+    :ensure t
+    :config
+    (column-number-mode 1)
+    (setq sml/theme 'respectful)
+    (setq sml/no-confirm-load-theme t)
+    :init
+    (sml/setup))
+#+END_SRC
+* Magit
+** Initial configuration
+#+BEGIN_SRC emacs-lisp
+  (use-package magit
+    :ensure t
+    :bind ("C-x g" . magit-status))
+#+END_SRC
