@@ -55,6 +55,11 @@
   ;; auto-save-timeout is amount of time before saving in seconds
   (setq auto-save-timeout 300)
 #+END_SRC
+** Line number and column number
+#+BEGIN_SRC emacs-lisp
+  (line-number-mode 1)
+  (column-number-mode 1)
+#+END_SRC
 * Org mode
 ** Org Initialization
 #+BEGIN_SRC emacs-lisp
@@ -82,6 +87,47 @@
                          :background "dark red"
                          :weight bold))
           ))
+#+END_SRC
+** Org bullets
+#+BEGIN_SRC emacs-lisp
+  (use-package org-bullets
+    :ensure t
+    :config
+    (add-hook 'org-mode-hook (lambda () (org-bullets-mode))))
+#+END_SRC
+* Themes
+** Sanityinc-tomorrow
+#+BEGIN_SRC emacs-lisp
+  (use-package color-theme-sanityinc-tomorrow
+    :ensure t
+    :init
+    (load-theme 'sanityinc-tomorrow-night t))
+#+END_SRC
+* Which key
+#+BEGIN_SRC emacs-lisp
+  (use-package which-key
+    :ensure t
+    :init
+    (which-key-mode))
+#+END_SRC
+* Mode line
+** Smart mode line
+#+BEGIN_SRC emacs-lisp
+  (use-package smart-mode-line
+    :ensure t
+    :config
+    (column-number-mode 1)
+    :init
+    (setq sml/theme 'respectful)
+    (setq sml/no-confirm-load-theme t)
+    (sml/setup))
+#+END_SRC
+* Magit
+** Initial configuration
+#+BEGIN_SRC emacs-lisp
+  (use-package magit
+    :ensure t
+    :bind ("C-x g" . magit-status))
 #+END_SRC
 * Haskell-mode
 #+BEGIN_SRC emacs-lisp
@@ -116,36 +162,32 @@
     :init
     (projectile-global-mode))
 #+END_SRC
-* Themes
-** Sanityinc-tomorrow
-#+BEGIN_SRC emacs-lisp
-  (use-package color-theme-sanityinc-tomorrow
-    :ensure t
-    :init
-    (load-theme 'sanityinc-tomorrow-night t))
-#+END_SRC
 * Yasnippet
 ** Initial config
 #+BEGIN_SRC emacs-lisp
   (use-package yasnippet
     :hook (prog-mode . yas-minor-mode))
 #+END_SRC
-* Mode line
-** Smart mode line
+* Rainbow-delimeters
+
 #+BEGIN_SRC emacs-lisp
-  (use-package smart-mode-line
+  (use-package rainbow-delimiters
+    :ensure t
+    :init
+    (rainbow-delimiters-mode 1))
+#+END_SRC
+
+* Dashboard
+#+BEGIN_SRC emacs-lisp
+  (use-package dashboard
     :ensure t
     :config
-    (column-number-mode 1)
-    (setq sml/theme 'respectful)
-    (setq sml/no-confirm-load-theme t)
-    :init
-    (sml/setup))
+    (dashboard-setup-startup-hook)
+    (setq dashboard-startup-banner "~/Pictures/icons/min_naru_resized.png")
+    (setq dashboard-items '((recents . 7) (projects . 5))))
 #+END_SRC
-* Magit
-** Initial configuration
+* Image+
 #+BEGIN_SRC emacs-lisp
-  (use-package magit
-    :ensure t
-    :bind ("C-x g" . magit-status))
+  (use-package image+
+    :ensure t)
 #+END_SRC
